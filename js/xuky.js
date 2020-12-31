@@ -342,8 +342,8 @@ let app = new Vue({
                 sao: 5,
             },
             {
-                anh: 'riseOfKingDoms.jpg',
-                title: 'Rise Of King Doms',
+                anh: 'wasteland3.jpg',
+                title: 'Wasteland 3',
                 theloai: 'Chiến thuật',
                 sao: 5,
             },
