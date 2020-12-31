@@ -147,7 +147,7 @@
                 </div>
                 <p>{{login.result}}</p>
                 
-                <button @click="dangnhap_func" class="btn btn-primary">Đăng Nhập</button>
+                <button @click="dangnhap_func" class="btn btn-primary my-5">Đăng Nhập</button>
 
             </div>
         </template>
@@ -185,8 +185,8 @@
 
 
                 </select>
-                {{dangki.result}}
-                <button class="btn btn-success mt-5" @click="dangki_func">Đăng kí</button>
+               <p> {{dangki.result}}</p>
+                <button class="btn btn-success my-5" @click="dangki_func">Đăng kí</button>
             </div>
         </template>
         <template v-if="themes==='gameChienThuat'">
