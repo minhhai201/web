@@ -24,9 +24,9 @@ let app = new Vue({
                 title: 'FIFA 21',
                 intro: 'FIFA 21 là mộttrò chơi video mô phỏng bóng đá đ'
             }, {
-                anh: 'tocchien.jpg',
-                title: 'Liên Minh: Tốc Chiến',
-                intro: 'Giống như Liên Minh Huyền Thoại, người chơi đảm nhận'
+                anh: 'doom%20eternal.jpg',
+                title: 'Doom Eternal',
+                intro: 'Lấy bối cảnh một thời gian sau các sự kiện củ'
             }, {
                 anh: 'wasteland3.jpg',
                 title: 'Wasteland 3',
