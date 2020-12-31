@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+          integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+          crossorigin="anonymous"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app" class="container-fluid m-0 p-0">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a id="logo" class="navbar-brand" @click="themes='home'">Ecommerce Store</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" @click="themes='home'">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" @click="themes='dienDan'">Diễn đàn</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" @click="themes='thietBi'">Thiết bị</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" @click="themes='BXH'">BXH Game</a>
+                    </li>
+
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            Thể loại
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" @click="themes='gameChienThuat'">Game Chiến Thuật</a></li>
+                            <li><a class="dropdown-item" @click="themes='gameHanhDong'">Game Hành Động</a></li>
+                            <li><a class="dropdown-item" @click="themes='gameDuaXe'">Game Đua xe</a></li>
+                            <li><a class="dropdown-item" @click="themes='gameNhapVai'">Game Nhập vai</a></li>
+
+
+                        </ul>
+                    </li>
+                    <form class="d-flex" style="width: 600px">
+                        <input class="form-control me-2"  type="search" placeholder="Tìm kiếm" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
+                    </form>
+                </ul>
+
+                <ul class="navbar-nav me-auto mb-2 " style="float: right; position: absolute; right: 50px">
+                    <li v-if="ttdn.username" class="nav-item">
+                        <a class="nav-link active" aria-current="page"> {{ttdn.username}}</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link active" aria-current="page" @click="themes='dangnhap'">Đăng Nhập</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" @click="themes='dangki'">Đăng Kí</a>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+    <div class="container">
+        <template v-if="themes==='home'">
+            <div id="carouselExampleControls" class="carousel slide  w-70 m-auto mt-3" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item  active">
+                        <img src="imagses/banner3.png" class="d-block w-100" alt="...">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="imagses/banner4.png" class="d-block w-100" alt="...">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </a>
+            </div>
+            <div class="container m-5">
+                <h3>Game nổi bật</h3>
+                <div class="row row-cols-1 row-cols-md-4 g-4">
+                    <template v-for="item in gameNoiBat">
+                        <div class="col">
+                            <div class="card" style="width: 18rem;">
+                                <img :src="'imagses/'+item.anh" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{item.title}}</h5>
+                                    <p class="card-text">{{item.intro}}</p>
+                                    <a href="#" class="btn btn-primary">Tải Về</a>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+            <div class="container m-5">
+                <h3>Game Mới</h3>
+                <div class="row row-cols-1 row-cols-md-4 g-4">
+                    <template v-for="item in gameMoi">
+                        <div class="col">
+                            <div class="card" style="width: 18rem;">
+                                <img :src="'imagses/'+item.anh" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{item.title}}</h5>
+                                    <p class="card-text">{{item.intro}}</p>
+                                    <a href="#" class="btn btn-primary">Tải Về</a>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+
+
+                </div>
+            </div>
+        </template>
+        <template v-if="themes==='dangnhap'">
+            <div class="mt-5">
+
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" v-model="login.email" class="form-control" id="exampleInputEmail1"
+                           aria-describedby="emailHelp">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" v-model="login.pass" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+                {{login.result}}
+                <button @click="dangnhap_func" class="btn btn-primary">Submit</button>
+
+            </div>
+        </template>
+        </template>
+        <template v-if="themes==='dangki'">
+            <div class="mt-5">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" v-model="dangki.username" placeholder="Username"
+                           aria-label="Username"
+                           aria-describedby="basic-addon1">
+                </div>
+
+                <div class="input-group mb-3">
+                    <input type="email" class="form-control" v-model="dangki.email" placeholder="Gmail"
+                           aria-label="Recipient's username"
+                           aria-describedby="basic-addon2">
+
+                </div>
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" v-model="dangki.pass" placeholder="Password"
+                           aria-label="Recipient's username"
+                           aria-describedby="basic-addon2">
+
+                </div>
+                <div class="input-group mb-3">
+                    <input type="date" class="form-control" v-model="dangki.date" placeholder="Gmail"
+                           aria-label="Recipient's username"
+                           aria-describedby="basic-addon2">
+
+                </div>
+                <select class="form-select" v-model="dangki.gender" aria-label="Default select example">
+                    <option selected>Giới tính</option>
+                    <option value="1">Nam</option>
+                    <option value="1">Nữ</option>
+
+
+                </select>
+                {{dangki.result}}
+                <button class="btn btn-success mt-5" @click="dangki_func">Đăng kí</button>
+            </div>
+        </template>
+        <template v-if="themes==='gameChienThuat'">
+            <div class="container">
+                <h2>Game chiến thuật</h2>
+                <div class="container m-5">
+                    <h3>Game nổi bật</h3>
+                    <div class="row row-cols-1 row-cols-md-4 g-4">
+                        <template v-for="item in gameChienThuat">
+                            <div class="col">
+                                <div class="card" style="width: 18rem;">
+                                    <img :src="'imagses/'+item.anh" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{item.title}}</h5>
+                                        <p class="card-text">{{item.intro}}</p>
+                                        <a href="#" class="btn btn-primary">Tải Về</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+                <div class="container m-5">
+                    <h3>Game Mới</h3>
+                    <div class="row row-cols-1 row-cols-md-4 g-4">
+                        <template v-for="item in gameChienThuat.reverse()">
+                            <div class="col">
+                                <div class="card" style="width: 18rem;">
+                                    <img :src="'imagses/'+item.anh" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{item.title}}</h5>
+                                        <p class="card-text">{{item.intro}}</p>
+                                        <a href="#" class="btn btn-primary">Tải Về</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+            </div>
+        </template>
+        <template v-if="themes==='gameDuaXe'">
+            <div class="container">
+                <h2>Game Đua Xe</h2>
+                <div class="container m-5">
+                    <h3>Game nổi bật</h3>
+                    <div class="row row-cols-1 row-cols-md-4 g-4">
+                        <template v-for="item in gameDuaXe">
+                            <div class="col">
+                                <div class="card" style="width: 18rem;">
+                                    <img :src="'imagses/'+item.anh" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{item.title}}</h5>
+                                        <p class="card-text">{{item.intro}}</p>
+                                        <a href="#" class="btn btn-primary">Tải Về</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+                <div class="container m-5">
+                    <h3>Game Mới</h3>
+                    <div class="row row-cols-1 row-cols-md-4 g-4">
+                        <template v-for="item in gameDuaXe.reverse()">
+                            <div class="col">
+                                <div class="card" style="width: 18rem;">
+                                    <img :src="'imagses/'+item.anh" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{item.title}}</h5>
+                                        <p class="card-text">{{item.intro}}</p>
+                                        <a href="#" class="btn btn-primary">Tải Về</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+            </div>
+
+        </template>
+        <template v-if="themes==='gameHanhDong'">
+            <div class="container">
+                <h2>Game Hành Động</h2>
+                <div class="container m-5">
+                    <h3>Game nổi bật</h3>
+                    <div class="row row-cols-1 row-cols-md-4 g-4">
+                        <template v-for="item in gameHanhDong">
+                            <div class="col">
+                                <div class="card" style="width: 18rem;">
+                                    <img :src="'imagses/'+item.anh" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{item.title}}</h5>
+                                        <p class="card-text">{{item.intro}}</p>
+                                        <a href="#" class="btn btn-primary">Tải Về</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+                <div class="container m-5">
+                    <h3>Game Mới</h3>
+                    <div class="row row-cols-1 row-cols-md-4 g-4">
+                        <template v-for="item in gameHanhDong.reverse()">
+                            <div class="col">
+                                <div class="card" style="width: 18rem;">
+                                    <img :src="'imagses/'+item.anh" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{item.title}}</h5>
+                                        <p class="card-text">{{item.intro}}</p>
+                                        <a href="#" class="btn btn-primary">Tải Về</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </template>
+        <template v-if="themes==='gameNhapVai'">
+            <div class="container">
+                <h2>Game nhập vai</h2>
+                <div class="container m-5">
+                    <h3>Game nổi bật</h3>
+                    <div class="row row-cols-1 row-cols-md-4 g-4">
+                        <template v-for="item in gameHanhDong.reverse()">
+                            <div class="col">
+                                <div class="card" style="width: 18rem;">
+                                    <img :src="'imagses/'+item.anh" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{item.title}}</h5>
+                                        <p class="card-text">{{item.intro}}</p>
+                                        <a href="#" class="btn btn-primary">Tải Về</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+                <div class="container m-5">
+                    <h3>Game Mới</h3>
+                    <div class="row row-cols-1 row-cols-md-4 g-4">
+                        <template v-for="item in gameHanhDong">
+                            <div class="col">
+                                <div class="card" style="width: 18rem;">
+                                    <img :src="'imagses/'+item.anh" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{item.title}}</h5>
+                                        <p class="card-text">{{item.intro}}</p>
+                                        <a href="#" class="btn btn-primary">Tải Về</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+
+            </div>
+        </template>
+
+        <template v-if="themes==='thietBi'">
+            <div class="container">
+                <div class="row">
+                    <div class="col-3 mt-5">
+                        <h3>Danh mục</h3>
+                        <div class="list-group">
+                            <button v-for="i  in danhSachPK" type="button"
+                                    class="list-group-item list-group-item-action btn-info"> {{i}}
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-9">
+                        <div class="container m-5">
+                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                <template v-for="item in danhSachSP">
+                                    <div class="col">
+                                        <div class="card" style="width: 18rem;">
+                                            <img :src="'imagses/'+item.anh" class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{item.title}}</h5>
+                                                <a href="#" class="btn btn-primary">{{item.gia}}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
+    <template v-if="themes==='dienDan'">
+        <div class="container">
+            <h2>Diễn đàn</h2>
+            <template v-for="item in dienDan">
+                <div class="row m-5 pb-3" style="border-bottom:1px solid #555555 ; ">
+                    <img :src="`imagses/` +item.anh" class="figure-img img-fluid rounded col-4" alt="...">
+                    <div class="col-8">
+                        <h3>{{item.title}}</h3>
+                        <p>{{item.content}}</p>
+                        <small class="col-12">{{item.time}}</small>
+                        <br>
+                        <button class="btn btn-dark my-5">Xem bài viết</button>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </template>
+    <template v-if="themes==='BXH'">
+        <div class="comtainer">
+            <h2>Bảng Xếp hạng game hot nhất tuần</h2>
+
+            <div class="col m-auto p-5">
+                <template v-for="item, index  in BXH">
+                    <div class="row">
+                        <small class="  col-1">
+                            {{index +1}}
+                        </small>
+                        <div class="row col-4">
+                            <div class="col-5">
+                                <img :src="`imagses/`+item.anh" style="width: 100%"
+                                     class="figure-img img-fluid rounded col-4"
+                                     alt="...">
+                            </div>
+                            <div class="col-6">
+                                <h6>{{item.title}}</h6>
+                                <small class="col-12">{{item.theloai}}</small>
+                                <p>{{item.sao}} <i class="fas fa-star"></i></p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </template>
+            </div>
+
+
+        </div>
+
+    </template>
+</div>
+
+
+</body>
+</html>
+<script src="js/xuky.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+        integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js"
+        integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj"
+        crossorigin="anonymous"></script>

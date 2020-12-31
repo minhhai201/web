@@ -1,0 +1,25 @@
+.carousel-item {
+    max-height: 40vh;
+}
+
+.card {
+    max-height: 300px;
+}
+
+.card img {
+    max-height: 200px;
+    overflow: hidden;
+
+}
+
+.card-body .card-text {
+    max-height: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#logo{
+    font-size: 25px;
+    color: #ff7000;
+    font-weight: bold;
+}
