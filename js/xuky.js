@@ -399,7 +399,7 @@ let app = new Vue({
         dangnhap_func: function () {
             for (let a of this.taikhoan) {
                 if (a.email === this.login.email && a.password === this.login.pass) {
-                    this.login.result = "thanh cong";
+                    this.login.result = "Đăng Nhập Thành Công";
                     this.daDangNhap = true;
                     this.themes = 'home';
                     this.ttdn = {
@@ -418,7 +418,7 @@ let app = new Vue({
                     }));
 
                 } else {
-                    this.login.result = "Sai";
+                    this.login.result = "Đăng nhập thất bại, kiểm  tra thông tin tài khoản";
                 }
             }
         },
@@ -432,8 +432,8 @@ let app = new Vue({
                 gender: this.dangki.gender
             });
             localStorage.setItem("taikhoan", JSON.stringify(this.taikhoan));
-            this.dangki.result = "thanh cong";
-            this.themes = 'dangnhap'
+            this.dangki.result = "Đăng kí thành công vui lòng đăng nhập";
+//             this.themes = 'dangnhap'
         },
 
     }
