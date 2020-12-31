@@ -378,21 +378,21 @@ let app = new Vue({
         ttdn: {}
 
     },
-    created: function () {
-        let aa = JSON.parse(localStorage.getItem("taikhoan")) || [];
-        for (let a of aa) {
-            this.taikhoan.push({
-                username: a.username,
-                password: a.password,
-                email: a.email,
-                date: a.date,
-                gender: a.gender
-            })
-        }
+//     created: function () {
+//         let aa = JSON.parse(localStorage.getItem("taikhoan")) || [];
+//         for (let a of aa) {
+//             this.taikhoan.push({
+//                 username: a.username,
+//                 password: a.password,
+//                 email: a.email,
+//                 date: a.date,
+//                 gender: a.gender
+//             })
+//         }
 
-        this.ttdn = JSON.parse(localStorage.getItem("ttdn"));
+//         this.ttdn = JSON.parse(localStorage.getItem("ttdn"));
 
-    },
+//     },
 
 
     methods: {
