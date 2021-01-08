@@ -3,7 +3,7 @@ let app = new Vue({
     data: {
         taikhoan: [
             {username: 'Hải', password: 'hai', email: 'hai@gmail.com', date: '', gender: 'Nam'},
-            {username: 'Hải', password: 'hai', email: 'hai@gmail.com', date: '', gender: 'Nam'}
+            {username: 'Minh Hải', password: 'minhhai', email: 'minhhai@gmail.com', date: '', gender: 'Nam'}
 
         ],
         gameNoiBat: [
